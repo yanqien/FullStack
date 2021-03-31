@@ -7,13 +7,15 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 
 export default defineConfig({
   base: './',
-  alias: {
-    '@': path.resolve(__dirname, 'src'),
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:7300',
+        target: 'http://192.168.0.104:7001',
         changeOrigin: true,
       },
     },

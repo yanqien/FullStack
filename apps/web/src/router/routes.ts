@@ -23,4 +23,16 @@ export default <RouteRecordRaw[]>[
     name: 'dashboard',
     component: () => import(/* webpackChunkName: "about" */ '../views/dashboard/index.vue'),
   },
+  {
+    path: '/articleList',
+    name: 'articleList',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/article/articleList/index.vue'),
+  },
+  {
+    path: '/articleDetail',
+    name: 'articleDetail',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/article/articleDetail/index.vue'),
+  }
 ]
