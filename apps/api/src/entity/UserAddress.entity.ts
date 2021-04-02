@@ -8,39 +8,39 @@ import {
 } from 'typeorm';
 
 @EntityModel()
-export class User extends BaseEntity {
+export class UserAddress extends BaseEntity {
   @PrimaryGeneratedColumn()
-  user_id: number;
+  address_id: number;
 
   @Column()
-  app_id: string;
+  user_id: string;
 
   @Column()
-  mobile: string;
+  user_name: string;
 
   @Column()
-  userName: string; // 用户名
+  user_mobile: string;
 
   @Column()
-  password: string;
+  province_id: number;
 
   @Column()
-  loginSecret: string; // 安全码
+  city_id: number;
 
   @Column()
-  sex: string;
+  area_id: number;
 
   @Column()
-  birthday: string;
+  address: number;
 
   @Column()
-  avatar: string;
+  full_address: number;
 
   @Column()
-  email: string;
+  is_default: number;
 
   @Column()
-  userMoney: string;
+  dataFlag: number;
 
   @CreateDateColumn({
     type: 'timestamp',

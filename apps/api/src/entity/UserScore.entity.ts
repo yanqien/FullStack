@@ -8,39 +8,21 @@ import {
 } from 'typeorm';
 
 @EntityModel()
-export class User extends BaseEntity {
+export class UserScore extends BaseEntity {
   @PrimaryGeneratedColumn()
+  score_id: number;
+
+  @Column()
   user_id: number;
 
   @Column()
-  app_id: string;
+  score_num: number;
 
   @Column()
-  mobile: string;
+  score_org: number; // 1：订单 2：评价 3：订单取消返还 4：拒收返还
 
   @Column()
-  userName: string; // 用户名
-
-  @Column()
-  password: string;
-
-  @Column()
-  loginSecret: string; // 安全码
-
-  @Column()
-  sex: string;
-
-  @Column()
-  birthday: string;
-
-  @Column()
-  avatar: string;
-
-  @Column()
-  email: string;
-
-  @Column()
-  userMoney: string;
+  score_type: number; // 1：收入 2：支出
 
   @CreateDateColumn({
     type: 'timestamp',

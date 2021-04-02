@@ -10,23 +10,6 @@ export class UserService {
   @InjectEntityModel(User)
   userModel: Repository<User>;
 
-  async getUser() {
-    return {
-      uid: 1,
-      username: 'mockedName',
-      phone: '12345678901',
-      email: 'xxx.xxx@xxx.com',
-    };
-  }
-
-  async getAllUsers(offset: number, take: number): Promise<User[]> {
-    return await this.userModel.find({
-      skip: offset,
-      take,
-      relations: ['posts', 'profile'],
-    });
-  }
-
   async getUserById(id: number): Promise<User> {
     console.log(id, this.userModel);
     return await this.userModel.findOne(id);
@@ -45,8 +28,8 @@ export class UserService {
   }
 
   async updateUser(user: UpdateUserInput): Promise<User> {
-    await this.userModel.update(user.id, user);
-    return await this.getUserById(user.id);
+    await this.userModel.update(user.user_id, user);
+    return await this.getUserById(user.user_id);
   }
 
   async deleteUser(id: number) {

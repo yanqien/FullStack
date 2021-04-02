@@ -11,7 +11,10 @@ service = axios.create({
     // 'Content-Type': 'application/x-www-form-urlencoded',
   },
 })
-
+/**
+ * todo
+ */
+// todo
 // request拦截器 axios的一些配置
 service.interceptors.request.use(
   (config: any) => {

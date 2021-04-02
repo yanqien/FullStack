@@ -3,7 +3,6 @@ import { InjectEntityModel } from '@midwayjs/orm';
 import { Repository } from 'typeorm';
 
 import { ArticleCate, ArticleList } from '../entity/Article.entity';
-// import { CreateUserInput, UpdateUserInput } from '../dto/User.dto';
 
 import { ArticleQueryDto } from '../dto/Article.dto';
 

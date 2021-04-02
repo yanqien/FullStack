@@ -9,11 +9,11 @@ export = (appInfo: any) => {
 
   config.orm = {
     type: 'mysql',
-    host: '8.135.135.96',
+    host: '116.62.187.222',
     port: 3306,
     username: 'root',
-    password: 'password',
-    database: 'boke',
+    password: '123456',
+    database: 'weidian',
     synchronize: true,
     entities: ['src/entity/*.ts'],
   };

@@ -23,12 +23,6 @@ export class UserController {
   @Inject()
   userService: UserService;
 
-  @Get('/getUser')
-  async GetUser(context: Context) {
-    const user = await this.userService.getUser();
-    return { success: true, message: 'OK', data: user };
-  }
-
   @Post('/login')
   async Login(@Body(ALL) user: UserLogin) {
     console.log(user);
