@@ -1,112 +1,71 @@
 <template>
-  <el-form
-    ref="registerForm"
-    :model="registerUser"
-    :rules="registerRules"
-    label-width="100px"
-    class="registerForm sign-up-form"
-  >
-    <el-form-item label="用户名" prop="name">
-      <el-input
-        v-model="registerUser.name"
-        placeholder="请输入用户名"
-      ></el-input>
-    </el-form-item>
-    <el-form-item label="账号" prop="email">
-      <el-input
-        v-model="registerUser.email"
-        placeholder="请输入账号"
-      ></el-input>
-    </el-form-item>
-    <el-form-item label="密码" prop="password">
-      <el-input
-        v-model="registerUser.password"
+  <div class="login-form">
+    <van-form @submit="onSubmit">
+      <van-field
+        v-model="state.username"
+        name="用户名"
+        label="用户名"
+        placeholder="用户名"
+        :rules="[{ required: true, message: '请填写用户名' }]"
+      />
+      <van-field
+        v-model="state.password"
         type="password"
-        placeholder="请输入密码"
-      ></el-input>
-    </el-form-item>
-    <el-form-item label="确认密码" prop="password2">
-      <el-input
-        v-model="registerUser.password2"
+        name="密码"
+        label="密码"
+        placeholder="密码"
+        :rules="[{ required: true, message: '请填写密码' }]"
+      />
+      <van-field
+        v-model="state.password"
         type="password"
-        placeholder="请再次输入密码"
-      ></el-input>
-    </el-form-item>
-
-    <el-form-item label="选择身份">
-      <el-select
-        class="select-width"
-        v-model="registerUser.role"
-        placeholder="请选择身份"
-      >
-        <el-option label="管理员" value="admin"></el-option>
-        <el-option label="用户" value="user"></el-option>
-        <el-option label="游客" value="visitor"></el-option>
-      </el-select>
-    </el-form-item>
-
-    <el-form-item>
-      <el-button
-        @click="handleRegister('registerForm')"
-        type="primary"
-        class="submit-btn"
-        >注册</el-button
-      >
-    </el-form-item>
-  </el-form>
+        name="重复密码"
+        label="重复密码"
+        placeholder="重复密码"
+        :rules="[{ required: true, message: '请填写重复密码' }]"
+      />
+      <div style="margin: 16px">
+        <van-button round block type="primary" native-type="submit"> 提交 </van-button>
+      </div>
+    </van-form>
+  </div>
 </template>
 
 <script lang="ts">
-import { ref, getCurrentInstance } from 'vue'
+import { getCurrentInstance, reactive, createApp } from 'vue'
+import { Form, Field, Button } from 'vant'
+
 import { useRouter } from 'vue-router'
-// import { Ref } from 'vue-property-decorator'
-import axios from 'axios' // 仅限在当前组件使用
 
 export default {
-  props: {
-    registerUser: {
-      type: Object,
-      required: true,
-    },
-    registerRules: {
-      type: Object,
-      required: true,
-    },
+  components: {
+    'van-form': Form,
+    'van-field': Field,
+    'van-button': Button,
   },
   setup() {
-    // @ts-ignore
-    const { ctx } = getCurrentInstance()
-    const router = useRouter()
-
-    const handleRegister = (formName: string) => {
-      ctx.$refs[formName].validate((valid: boolean) => {
-        if (valid) {
-          const params: object = Object.assign({}, ctx.registerUser, true)
-          console.log(params, '提交的参数')
-          axios.post('/api/user/register', params)
-          .then(res => {
-            if(res){
-              console.log(res)
-              router.push('/home')
-            }
-
-          })
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
+    const state = reactive({
+      username: '',
+      password: '',
+    })
+    const onSubmit = (values: any) => {
+      console.log('submit', values)
     }
 
-    return { handleRegister }
+    return {
+      state,
+      onSubmit,
+    }
   },
 }
 </script>
-<style scoped>
-.select-width {
-  width: 270px;
-}
-.submit-btn {
-  width: 100%;
+<style scoped lang="scss">
+.login-form {
+  padding: 20px 0 1px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  .van-cell {
+    background: transparent;
+  }
 }
 </style>

@@ -9,11 +9,6 @@ export default <RouteRecordRaw[]>[
     component: Home,
   },
   {
-    name: 'about',
-    path: '/about',
-    component: () => import('@/views/about/index.vue'),
-  },
-  {
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "about" */ '../views/loginRegister/index.vue'),
@@ -24,13 +19,13 @@ export default <RouteRecordRaw[]>[
     component: () => import(/* webpackChunkName: "about" */ '../views/dashboard/index.vue'),
   },
   {
-    path: '/articleList',
-    name: 'articleList',
+    path: '/userCenter',
+    name: 'userCenter',
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/article/articleList/index.vue'),
+      import(/* webpackChunkName: "about" */ '../views/user/userCenter/index.vue'),
   },
   {
-    path: '/articleDetail',
+    path: '/userA',
     name: 'articleDetail',
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/article/articleDetail/index.vue'),

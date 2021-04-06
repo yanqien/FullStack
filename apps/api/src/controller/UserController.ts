@@ -43,7 +43,6 @@ export class UserController {
 
   @Post('/register')
   async Register(@Body(ALL) user: UserRegister) {
-    console.log(user);
     let res = {};
     try {
       const users: User[] = await this.userService.getUserByName(user.name);

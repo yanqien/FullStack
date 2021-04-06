@@ -1,93 +1,63 @@
 <template>
-  <el-form ref="loginForm" :model="loginUser" :rules="rules" class="loginForm sign-in-form">
-    <el-form-item label="" prop="userName">
-      <el-input v-model="loginUser.userName" placeholder="请输入账号"></el-input>
-    </el-form-item>
-    <el-form-item label="" prop="password">
-      <el-input
-        v-model="loginUser.password"
+  <div class="login-form">
+    <van-form @submit="onSubmit">
+      <van-field
+        v-model="state.username"
+        name="用户名"
+        label="用户名"
+        placeholder="用户名"
+        :rules="[{ required: true, message: '请填写用户名' }]"
+      />
+      <van-field
+        v-model="state.password"
         type="password"
-        placeholder="请输入密码"
-      ></el-input>
-    </el-form-item>
-
-    <el-form-item>
-      <el-button @click="handleLogin('loginForm')" type="primary" class="submit-btn"
-        >提交</el-button
-      >
-    </el-form-item>
-
-    <!-- 找回密码 -->
-    <div class="tiparea">
-      <p>忘记密码？ <a>立即找回</a></p>
-    </div>
-  </el-form>
+        name="密码"
+        label="密码"
+        placeholder="密码"
+        :rules="[{ required: true, message: '请填写密码' }]"
+      />
+      <div style="margin: 16px">
+        <van-button round block type="primary" native-type="submit"> 提交 </van-button>
+      </div>
+    </van-form>
+  </div>
 </template>
 
 <script lang="ts">
+import { getCurrentInstance, reactive, createApp } from 'vue'
+import { Form, Field, Button } from 'vant'
+
 import { useRouter } from 'vue-router'
-import { getCurrentInstance, ref } from 'vue'
-import axios from 'axios'
+
 export default {
-  props: {
-    loginUser: {
-      type: Object,
-      required: true,
-    },
-    rules: {
-      type: Object,
-      required: true,
-    },
+  components: {
+    'van-form': Form,
+    'van-field': Field,
+    'van-button': Button,
   },
-  setup(props: object) {
-    // @ts-ignore
-    const { ctx } = getCurrentInstance()
-
-    const router = useRouter()
-
-    // 触发登录方法
-    const handleLogin = (formName: string) => {
-      ctx.$refs[formName].validate((valid: boolean) => {
-        if (valid) {
-          const params: object = Object.assign({}, ctx.loginUser, true)
-          console.log(params, '提交的参数')
-            axios.post('/api/user/login', params)
-            .then(res => {
-              console.log(res)
-              router.push('/home')
-            })
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
+  setup() {
+    const state = reactive({
+      username: '',
+      password: '',
+    })
+    const onSubmit = (values: any) => {
+      console.log('submit', values)
     }
 
-    const loginForm = ref(null)
-
-    return { handleLogin, loginForm }
+    return {
+      state,
+      onSubmit,
+    }
   },
 }
 </script>
-<style scoped>
-/* form */
-.loginForm {
-  margin-top: 20px;
-  background-color: #fff;
-  padding: 40px 40px 20px 40px;
-  border-radius: 5px;
-  box-shadow: 0px 5px 10px #cccc;
-}
-
-.submit-btn {
-  width: 100%;
-}
-.tiparea {
-  text-align: right;
-  font-size: 12px;
-  color: #333;
-}
-.tiparea p a {
-  color: #409eff;
+<style scoped lang="scss">
+.login-form {
+  padding: 20px 0 1px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  .van-cell {
+    background: transparent;
+  }
 }
 </style>
