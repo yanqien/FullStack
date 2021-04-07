@@ -11,23 +11,23 @@ export default <RouteRecordRaw[]>[
   {
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "about" */ '../views/loginRegister/index.vue'),
+    component: () => import(/* webpackChunkName: "login" */ '../views/loginRegister/index.vue'),
   },
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: () => import(/* webpackChunkName: "about" */ '../views/dashboard/index.vue'),
+    component: () => import(/* webpackChunkName: "dashboard" */ '../views/dashboard/index.vue'),
   },
   {
     path: '/userCenter',
     name: 'userCenter',
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/user/userCenter/index.vue'),
+      import(/* webpackChunkName: "userCenter" */ '../views/user/userCenter/index.vue'),
   },
   {
-    path: '/userA',
-    name: 'articleDetail',
+    path: '/userAddress',
+    name: 'userAddress',
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/article/articleDetail/index.vue'),
-  }
+      import(/* webpackChunkName: "userAddress" */ '../views/user/userAddress/index.vue'),
+  },
 ]

@@ -1,18 +1,24 @@
 import {
   Inject,
   Controller,
-  Get,
+  // Get,
   Post,
+  // Query,
   Provide,
-  Param,
-  Body,
-  ALL,
+  // Param,
+  // Body,
+  // ALL,
 } from '@midwayjs/decorator';
 import { Context } from 'koa';
-import { User } from '../entity/User.entity';
-import { UserLogin, UserRegister, CreateUserInput } from '../dto/User.dto';
 
-import { UserService } from '../service/User';
+import { userService } from '../service/User';
+
+import {
+  registerData,
+  registerParamDto,
+  loginData,
+  loginParamDto,
+} from '../dto/User.dto';
 
 @Provide()
 @Controller('/api/user')
@@ -21,55 +27,73 @@ export class UserController {
   ctx: Context;
 
   @Inject()
-  userService: UserService;
-
-  @Post('/login')
-  async Login(@Body(ALL) user: UserLogin) {
-    console.log(user);
-    const users: User[] = await this.userService.getUserByName(user.userName);
-    let res = {};
-    if (
-      users.length > 0 &&
-      users[0].userName == user.userName &&
-      users[0].password == user.password
-    ) {
-      res = { success: true, message: 'OK' };
-    } else {
-      res = { success: false, message: 'OK', data: '用户名或密码错误' };
-    }
-    console.log(res);
-    return res;
-  }
+  userService: userService;
 
   @Post('/register')
-  async Register(@Body(ALL) user: UserRegister) {
-    let res = {};
+  async registerUser() {
     try {
-      const users: User[] = await this.userService.getUserByName(user.name);
-      if (users.length > 0 && users[0].userName == user.name) {
-        res = { success: false, message: 'Fail', data: '用户名已存在' };
+      const ctx = this.ctx;
+      const query: registerData = ctx.query;
+      const dto = registerParamDto.create(query);
+
+      const errors = await dto.validate();
+      ctx.assert(errors.length === 0, 422, '验证失败', {
+        details: errors,
+      });
+
+      // 查询是否有已存在的用户名
+      const users: any[] = await this.userService.getUserByName(dto.userName);
+      if (users.length > 0 && users[0].userName == dto.userName) {
+        return { status: 'fail', code: 0, message: '用户名已存在' };
       } else {
-        const createUser: CreateUserInput = new CreateUserInput();
-        createUser.name = user.name;
-        createUser.password = user.password;
-        const resUser: User = await this.userService.createUser(createUser);
-        if (resUser) {
-          res = { success: true, message: 'OK' };
-        } else {
-          res = { success: false, message: 'Fail', data: '注册失败' };
+        if (dto.password !== dto.repassword) {
+          return { status: 'fail', code: 0, message: '密码与重复密码不一致' };
         }
+        // 验证都通过时获取用户信息
+        const user = await this.userService.createUser(dto);
+        return {
+          status: 'success',
+          code: 200,
+          message: '注册成功',
+          data: user,
+        };
       }
     } catch (error) {
-      res = { success: false, message: 'Fail', data: error };
+      return { status: 'fail', code: 0, message: '注册失败', data: error };
     }
-
-    console.log(res);
-    return res;
   }
 
-  @Get('/getUserById/:id')
-  async getUserById(@Param() id: number) {
-    const user = await this.userService.getUserById(id);
-    return { success: true, message: 'OK', data: user };
+  @Post('/login')
+  async loginUser() {
+    try {
+      const ctx = this.ctx;
+      const query: loginData = ctx.query;
+      const dto = loginParamDto.create(query);
+
+      const errors = await dto.validate();
+      // 断言是否验证通过
+      ctx.assert(errors.length === 0, 422, '验证失败', {
+        details: errors,
+      });
+
+      const users: any[] = await this.userService.getUserByName(dto.userName);
+      if (
+        users.length > 0 &&
+        users[0].userName == dto.userName &&
+        users[0].password == dto.password
+      ) {
+        return { status: 'success', code: 200, message: '登录成功' };
+      } else {
+        return { status: 'fail', code: 0, message: '用户名或密码错误' };
+      }
+    } catch (error) {
+      return { status: 'fail', code: 0, message: '登录失败', data: error };
+    }
   }
+
+  //   @Get('/getUserById/:id')
+  //   async getUserById(@Param() id: number) {
+  //     const user = await this.userService.getUserById(id);
+  //     return { success: true, message: 'OK', data: user };
+  //   }
 }
