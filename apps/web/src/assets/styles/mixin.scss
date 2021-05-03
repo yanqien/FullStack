@@ -1,0 +1,157 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    height:0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+  }
+}
+
+// 行内块最顶
+@mixin alignTop {
+  display: inline-block;
+  vertical-align: top;
+}
+
+//超出显示省略号
+@mixin showEllipsis{
+  white-space:nowrap;
+  word-break: break-word;
+  text-overflow:ellipsis;
+  overflow: hidden;
+}
+
+//超出显示省略号,可控制显示多少行
+@mixin lineClamp($font-size:16px,$line-height:1.4,$lines-to-show:2){
+  display: -webkit-box;
+  //height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+  font-size:$font-size;
+  height: auto;
+  line-height: $line-height;
+  -webkit-line-clamp: $lines-to-show;
+  -webkit-box-orient: vertical;
+  white-space: inherit;
+  word-break:break-all;
+  text-overflow:ellipsis;
+  overflow: hidden;
+}
+
+//渐变色
+@mixin gradient($endLocation, $beginColor, $endColor) {
+	background: -moz-linear-gradient(to $endLocation, $beginColor, $endColor);
+	background: -webkit-linear-gradient(to $endLocation, $beginColor, $endColor);
+	background: -o-linear-gradient(to $endLocation, $beginColor, $endColor);
+	background: -ms-linear-gradient(to $endLocation, $beginColor, $endColor);
+	background: linear-gradient(to $endLocation, $beginColor, $endColor);
+}
+
+// 按钮组合
+@mixin btnGroup($btnColor, $bgColor) {
+  color: $btnColor;
+  background: $bgColor;
+}
+
+@mixin boxSizing{
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+// 默认input框样式
+@mixin defaultInput {
+  @include alignTop;
+  min-width: 420px;
+  outline: none;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: #fff;
+  caret-color: #333;
+  &::-webkit-input-placeholder { /* WebKit browsers */
+    color: #ffe8e6;
+  }
+}
+
+// placeholder样式
+@mixin placeColor($color, $opacity:1) {
+	input:-moz-placeholder,
+	textarea:-moz-placeholder {
+		/* Mozilla Firefox 4 to 18 */
+		color: $color;
+		opacity: $opacity;
+	}
+	input::-moz-placeholder,
+	textarea::-moz-placeholder {
+		/* Mozilla Firefox 19+ */
+		color: $color;
+		opacity: $opacity;
+	}
+	input:-ms-input-placeholder,
+	textarea:-ms-input-placeholder {
+		color: $color;
+		opacity: $opacity;
+	}
+	input::-webkit-input-placeholder,
+	textarea::-webkit-input-placeholder {
+		color: $color;
+		opacity: $opacity;
+	}
+}
+
+@mixin scrollBar {
+  &::-webkit-scrollbar-track-piece {
+    background: #d3dce6;
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #99a9bf;
+    border-radius: 20px;
+  }
+}
+
+@mixin triangle($width, $height, $color, $direction) {
+  $width: $width/2;
+  $color-border-style: $height solid $color;
+  $transparent-border-style: $width solid transparent;
+  height: 0;
+  width: 0;
+  @if $direction==up {
+    border-bottom: $color-border-style;
+    border-left: $transparent-border-style;
+    border-right: $transparent-border-style;
+  }
+  @else if $direction==right {
+    border-left: $color-border-style;
+    border-top: $transparent-border-style;
+    border-bottom: $transparent-border-style;
+  }
+  @else if $direction==down {
+    border-top: $color-border-style;
+    border-left: $transparent-border-style;
+    border-right: $transparent-border-style;
+  }
+  @else if $direction==left {
+    border-right: $color-border-style;
+    border-top: $transparent-border-style;
+    border-bottom: $transparent-border-style;
+  }
+}
+
+@mixin transition($property:all, $duration:0.1s, $timing-function:linear, $delay:0s) {
+	-webkit-transition: $property $duration $timing-function $delay;
+	-moz-transition: $property $duration $timing-function $delay;
+	transition: $property $duration $timing-function $delay;
+}
+
+@mixin translate($deltaX:0, $deltaY:0) {
+	-webkit-transform: translate($deltaX, $deltaY);
+	transform: translate($deltaX, $deltaY);
+}
+
+@mixin translate3d($deltaX:0, $deltaY:0, $deltaZ:0) {
+	-webkit-transform: translate3d($deltaX, $deltaY, $deltaZ);
+	transform: translate3d($deltaX, $deltaY, $deltaZ);
+}

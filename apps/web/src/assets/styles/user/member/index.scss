@@ -1,0 +1,286 @@
+@import '../../mixin.scss';
+
+// @import "../../variables";
+.member-container {
+  .u-id-s2-links {
+    margin: 20px 0;
+    border-radius: 0;
+    background: #fff;
+    &-title {
+      overflow: hidden;
+      border-bottom: 1px solid #ededed;
+      line-height: 80px;
+      padding: 0 26px;
+      h3 {
+        float: left;
+        font-size: 32px;
+        font-weight: bold;
+        color: #333333;
+      }
+      p {
+        float: right;
+        font-size: 26px;
+        color: #999999;
+        position: relative;
+        padding-right: 30px;
+        &::after {
+          content: '';
+          width: 11px;
+          height: 18px;
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background: url('src/assets/images/user/member/right.png') center/cover no-repeat;
+        }
+      }
+    }
+    &.style2 {
+      margin: 20px;
+      border-radius: 20px;
+    }
+
+    .link {
+      position: relative;
+      display: block;
+      float: left;
+      width: 20%;
+      text-align: center;
+      padding: 35px 0;
+
+      &:nth-child(-n + 4) {
+        padding-bottom: 0;
+      }
+
+      &.master {
+        &::before {
+          content: '';
+          display: inline-block;
+          position: absolute;
+          left: 0;
+          width: 14px;
+          height: 86px;
+          background: url('src/assets/images/user/member/line_style.png') no-repeat;
+          background-size: contain;
+        }
+      }
+
+      .icon-links {
+        display: block;
+        margin: 0 auto 15px;
+        width: 48px;
+        height: 48px;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+
+        @for $i from 1 through 5 {
+          &.icon1_#{$i} {
+            background-image: url('src/assets/images/user/member/icon1_#{$i}.png');
+          }
+        }
+
+        @for $i from 1 through 4 {
+          &.icon2_#{$i} {
+            background-image: url('src/assets/images/user/member/icon2_#{$i}.png');
+          }
+        }
+      }
+
+      .title {
+        display: block;
+        line-height: 1.5;
+        font-size: 24px;
+        color: #666666;
+      }
+
+      .title_detail {
+        color: #999;
+        position: absolute;
+        font-size: 20px;
+        color: #fff;
+        min-width: 30px;
+        line-height: 30px;
+        border-radius: 15px;
+        padding: 0 5px;
+        background: #f20b22;
+        top: 20px;
+        right: 30px;
+      }
+
+      .num {
+        color: #999;
+        position: absolute;
+        font-size: 20px;
+        color: #fff;
+        min-width: 30px;
+        line-height: 30px;
+        border-radius: 15px;
+        padding: 0 5px;
+        background: #f20b22;
+        top: 20px;
+        right: 30px;
+      }
+    }
+  }
+
+  .mainmodule {
+    .lunbo {
+      margin: 20px auto;
+      padding: 0 20px;
+
+      /* .van-notice-bar{
+				height:48px;
+				margin:0 20px;
+				padding:0;
+				line-height: 48px;
+				font-size: 24px;
+				border-radius: 24px;
+				background:#f1f1f1;
+				color: #333;
+			} */
+      marquee {
+        display: inline-block;
+        vertical-align: middle;
+        // border-radius: 40px;
+        padding: 6px 0;
+        line-height: 36px;
+        // margin-right: 5px;
+        font-size: 24px;
+        background: #f1f1f1;
+      }
+    }
+
+    .numB {
+      display: inline-block;
+      min-width: 80px;
+      line-height: 44px;
+      border-radius: 40px;
+      background-color: #f20b22;
+      color: #fff;
+      text-align: center;
+      text-indent: 0;
+      font-size: 20px;
+      position: absolute;
+      right: 64px;
+      top: 50%;
+      padding: 0 6px;
+      // font-weight: 400;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+  }
+
+  .mlogin-but {
+    margin: 50px 20px 40px;
+    text-align: center;
+
+    &.style1 {
+      margin: 50px 0 40px;
+
+      a {
+        width: 87%;
+      }
+    }
+
+    a {
+      overflow: hidden;
+      display: block;
+      // width: 87%;
+      height: 90px;
+      line-height: 90px;
+      margin: 0 auto;
+      // @include gradient(to right,#ff8b27,#ff4a01);
+      font-size: 30px;
+      border: 0;
+      border-radius: 46px;
+      color: #fff;
+    }
+  }
+
+  // 定制 松鼠小屋
+  .u-id-s2-card,
+  .u-id-s1-card {
+    background: #fff;
+    // width: calc(100% - 40px);
+    margin: 20px;
+    border-radius: 20px;
+
+    /* &.u-id-s1-card {
+      background: #fff;
+      width: 100%;
+      margin: 20px 0 0;
+      border-radius: 0;
+    } */
+
+    .u-id-s2-actions-title {
+      width: 100%;
+      padding: 20px 36px;
+      border-bottom: 2px solid #f5f5f5;
+      line-height: 1.5;
+      font-size: 28px;
+      font-weight: 400;
+      color: #333;
+
+      // -moz-box-sizing: border-box;
+      // -webkit-box-sizing: border-box;
+      // box-sizing: border-box;
+      i {
+        display: block;
+        font-size: 24px;
+        color: #999;
+      }
+    }
+
+    .card-item {
+      width: 100%;
+      padding: 30px 0;
+
+      // margin: 0 18px;
+      .card-img {
+        width: 146px;
+        height: 146px;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        box-shadow: 0px 4px 24px 0px rgba(119, 119, 119, 0.39);
+        margin-right: 2.5%;
+        margin-left: 36px;
+
+        img {
+          display: block;
+          width: 140px;
+          height: 140px;
+          margin: 0;
+          padding: 0;
+          border: 0;
+          border-radius: 50%;
+        }
+      }
+
+      .card-text {
+        margin: 0;
+        overflow: hidden;
+
+        p {
+          width: 100%;
+          color: #000;
+          font-size: 24px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          line-height: 2;
+
+          i {
+            display: inline-block;
+            width: 140px;
+            text-align: right;
+          }
+
+          span {
+            color: #999;
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+}

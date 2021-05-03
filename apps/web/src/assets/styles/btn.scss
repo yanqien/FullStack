@@ -1,0 +1,166 @@
+@import './variables.scss';
+@import './mixin.scss';
+
+@mixin colorBtn($color) {
+  background: $color;
+  &:hover {
+    color: $color;
+    &:before,
+    &:after {
+      background: $color;
+    }
+  }
+}
+
+@mixin borderBtn($color) {
+  color: $color;
+  background: transparent;
+  border:2px solid $color;
+}
+
+.blue-btn {
+  @include colorBtn($blue)
+}
+
+.light-blue-btn {
+  @include colorBtn($light-blue)
+}
+
+.red-btn {
+  @include colorBtn($red)
+}
+
+.pink-btn {
+  @include colorBtn($pink)
+}
+
+.green-btn {
+  @include colorBtn($green)
+}
+
+.tiffany-btn {
+  @include colorBtn($tiffany)
+}
+
+.yellow-btn {
+  @include colorBtn($yellow)
+}
+
+.default-btn {
+  @include colorBtn($default)
+}
+
+.warning-btn {
+  @include colorBtn($warning)
+}
+
+.btn-orange{
+  @include colorBtn(#ff8f09)
+}
+
+.danger-btn {
+  @include colorBtn($danger)
+}
+
+.disabled-btn {
+  @include colorBtn($disabled)
+}
+.btn-primary {
+  background-color: #fff;
+  color: #333;
+  box-sizing: border-box;
+  border: 2px solid #ddd;
+}
+
+.btn-warning{
+  @include gradient(right,#ff9a1a,#ff8603);
+  color:#fff;
+}
+
+.btn-success{
+  @include gradient(right,#61d070,#5fcc6e);
+  color:#fff;
+}
+
+//加入购物车
+.cart-gra-btn{
+  // @include gradient(right,#ffca00,#ff9500)
+  @include gradient(right,#FFAE00,#FF8A02);
+  color:#fff;
+}
+//立即购买
+.buy-gra-btn{
+  // @include gradient(right,#ff7700,#ff4a00)
+  @include gradient(right,#FE1B49,#E90104);
+  color:#fff;
+}
+// 其他橙色渐变按钮
+.orange-gra-btn{
+  @include gradient(right,#ff8b27, #ff4a00);
+  color:#fff;
+}
+// 红色渐变渐变按钮
+.red-gra-btn{
+  @include gradient(right,#FE1B49, #E90104);
+  color:#fff;
+}
+// 土豪金渐变渐变按钮
+.gold-gra-btn{
+  @include gradient(right,#FBE3A5, #DEAD6F);
+  color:#fff;
+}
+.orange-pop-gra-btn{
+  @include gradient(right,#ff7200, #ff4e00);
+  color:#fff;
+}
+
+// 边框按钮
+.red-border-btn{
+  @include borderBtn(#E90104);
+}
+.orange-border-btn{
+  @include borderBtn(#FF9102);
+}
+// 土豪金边框按钮
+.gold-border-btn{
+  @include borderBtn(#DEAD6F);
+}
+
+.wfx-btn {
+  font-size: 14px;
+  color: #fff;
+  padding: 14px 36px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  margin-right: 25px;
+  transition: 600ms ease all;
+  position: relative;
+  display: inline-block;
+  &:hover {
+    background: #fff;
+    &:before,
+    &:after {
+      width: 100%;
+      transition: 600ms ease all;
+    }
+  }
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    transition: 400ms ease all;
+  }
+  &::after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+

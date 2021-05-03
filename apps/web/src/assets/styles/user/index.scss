@@ -1,0 +1,1143 @@
+@import '../mixin';
+@import '../variables';
+
+.style2-top,
+.style1-top {
+  width: 100%;
+  background: $default center center no-repeat;
+  background-size: cover;
+  // overflow: hidden;
+  position: relative;
+  padding-bottom: 16px;
+  &.padding110 {
+    padding-bottom: 110px;
+  }
+  .cover {
+    position: absolute;
+    z-index: 9;
+    bottom: -2px;
+    width: 750px;
+    height: 18px;
+    background: url('src/assets/images/user/member/user_bg_bottom_cover.png') center/100% 100%
+      no-repeat;
+  }
+  .infoPanel {
+    position: relative;
+    padding: 0 30px;
+    overflow: hidden;
+    .avatar-box {
+      width: 120px;
+      height: 120px;
+      display: inline-block;
+      margin-top: 46px;
+      margin-right: 22px;
+      .avatar {
+        width: 100%;
+        height: 100%;
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+      }
+    }
+
+    .outer {
+      display: none;
+      position: absolute;
+      width: 125px;
+      height: 125px;
+      background: url('src/images/user/icon-spin-s.png') no-repeat;
+      background-size: 100%;
+      -webkit-animation: spin 800ms infinite linear;
+      animation: spin 800ms infinite linear;
+      top: 50px;
+      left: 18px;
+    }
+
+    .userinfo {
+      width: 73%;
+      padding: 46px 0 0;
+      color: #fff;
+      font-size: 24px;
+      li,
+      p {
+        margin-bottom: 10px;
+        position: relative;
+        font-size: 24px;
+        color: #ffe5e9;
+        &.nickname {
+          margin-bottom: 12px;
+          line-height: 1.2;
+          .nickname-title {
+            overflow: hidden;
+            display: inline-block;
+            max-width: 53%;
+            font-size: 36px;
+            line-height: 40px;
+            height: 40px;
+            font-weight: bold;
+            @include showEllipsis;
+            color: #fff;
+          }
+          .lit-spn {
+            @include alignTop;
+            height: auto;
+            line-height: 24px;
+            padding: 8px 18px;
+            margin-left: 15px;
+            color: #180000;
+            @include gradient(right, #fce36f, #ffc902);
+            border: 0;
+          }
+        }
+        .lit-spn {
+          display: inline-block;
+          padding: 0 18px 0 0;
+          height: 36px;
+          line-height: 36px;
+          border-radius: 20px;
+          font-size: 20px;
+          //background:rgba(0,0,0,.15);
+        }
+      }
+    }
+    .j-toggle {
+      display: block;
+      position: absolute;
+      top: 49%;
+      right: 25%;
+      width: 22px;
+      padding: 14px;
+      box-sizing: initial;
+      img {
+        width: 100%;
+      }
+    }
+    .hd-input {
+      position: absolute;
+      right: 0;
+      top: 110px;
+      color: #fff;
+      .title {
+        font-size: 24px;
+        display: inherit;
+        text-indent: 6px;
+        font-family: FangSong;
+        max-width: 140px;
+        white-space: nowrap;
+        overflow: hidden;
+        i {
+          background: url('src/assets/images/user/member/icon_user.png') no-repeat;
+          width: 26px;
+          height: 31px;
+          margin-right: 6px;
+          display: inline-block;
+          position: relative;
+          top: 8px;
+          background-size: contain;
+        }
+        .qd-logo {
+          width: 24px;
+          height: 30px;
+          background: url('src/assets/images/user/member/qd_logo.png') no-repeat;
+          background-size: contain;
+        }
+      }
+      .change_qiandao {
+        color: #ffdd79;
+      }
+      .btn {
+        width: 145px;
+        height: 56px;
+        line-height: 56px;
+        text-indent: 56px;
+        @include gradient(right, #fce36f, #ffc902);
+        border-radius: 28px 0px 0px 28px;
+        font-size: 24px;
+        font-weight: 500;
+        color: #180000;
+        position: relative;
+        &.qd-btn {
+          i {
+            width: 38px;
+            height: 38px;
+            position: absolute;
+            left: 11px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: url('src/assets/images/user/member/g_bg.png') center/cover no-repeat;
+          }
+        }
+      }
+    }
+    .gotoMail {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      background: url('src/assets/images/user/member/msg.png') center no-repeat;
+      background-size: contain;
+      z-index: 1;
+      width: 46px;
+      height: 46px;
+
+      .num {
+        position: absolute;
+        top: -10px;
+        right: -24px;
+        font-size: 18px;
+        color: #ea2b18;
+        padding: 0 6px;
+        text-align: center;
+        border-radius: 14px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .myif-er {
+      position: absolute;
+      top: 30px;
+      right: 108px;
+      width: 42px;
+      height: 42px;
+      z-index: 1;
+      background: url('src/assets/images/user/qrcode.png') center no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+  .head-nav {
+    display: flex;
+    padding: 30px 0;
+    .link {
+      flex: 1;
+      text-align: center;
+      color: #fff;
+      span {
+        display: block;
+        &.title_num {
+          font-size: 26px;
+          margin-bottom: 20px;
+        }
+        &.title {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+  .membership-card {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 110px;
+    background: url('src/assets/images/user/member/membership_card.png') center/cover no-repeat;
+    .card-text {
+      font-size: 26px;
+      color: rgba(251, 215, 145, 1);
+      width: 50%;
+      line-height: 110px;
+      margin-left: 155px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .card-btn {
+      position: absolute;
+      right: 57px;
+      top: 50%;
+      transform: translateY(-50%);
+      line-height: 50px;
+      border-radius: 25px;
+      padding: 0 40px 0 20px;
+      font-size: 22px;
+      color: #262d46;
+      @include gradient(right, #fbe3a5, #dead6f);
+      &::after {
+        position: absolute;
+        width: 7px;
+        height: 12px;
+        content: '';
+        background: url('src/assets/images/user/member/sss.png') center/cover no-repeat;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+
+.accountPanel-links {
+  margin: 20px 25px;
+  border-radius: 20px;
+  background: $default;
+
+  .accountPanel {
+    border-radius: 20px;
+    background: #fff;
+    // padding: 0 24px;
+    .line-bor {
+      width: 640px;
+      height: 2px;
+      margin: 0 auto;
+      background: #ededed;
+    }
+    .iner-bor {
+      // border-bottom: 1px solid #EDEDED;
+      overflow: hidden;
+      padding-right: 24px;
+      .item {
+        font-size: 24px;
+        text-align: center;
+        width: 175px;
+        margin: 30px 0;
+        color: #333;
+        &:first-child {
+          border-left: 0;
+        }
+
+        i {
+          // vertical-align: top;
+          display: block;
+          @include showEllipsis;
+        }
+        p {
+          margin-top: 20px;
+          color: #666666;
+          @include lineClamp(24px, auto, 1);
+        }
+      }
+
+      .btn-sign {
+        display: block;
+        width: 136px;
+        padding: 15px 0;
+        line-height: 26px;
+        border-radius: 37.5px;
+        margin-top: 42px;
+        font-size: 26px;
+        color: $default;
+        text-align: center;
+        @include gradient(right, #fe224e, #e90104);
+      }
+    }
+    .iner-bor2 {
+      overflow: hidden;
+      .item {
+        text-align: center;
+        width: 33.3%;
+        color: #333;
+        padding: 40px 0;
+        position: relative;
+        &::after {
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 1px;
+          height: 56px;
+          background: #ededed;
+        }
+        &:first-child {
+          border-left: 0;
+        }
+        &:last-child {
+          &::after {
+            height: 0;
+          }
+        }
+        i {
+          color: #f30c23;
+          font-size: 28px;
+          // font-weight: bold;
+          padding-bottom: 20px;
+          display: block;
+          @include lineClamp(32px, 1, 1);
+        }
+        p {
+          color: #666666;
+          @include lineClamp(24px, 1, 1);
+        }
+      }
+      &.col2 {
+        .item {
+          width: 50%;
+        }
+      }
+
+      .btn-sign {
+        display: block;
+        width: 136px;
+        padding: 15px 0;
+        line-height: 26px;
+        border-radius: 37.5px;
+        margin-top: 42px;
+        font-size: 26px;
+        color: $default;
+        text-align: center;
+        @include gradient(right, #fe224e, #e90104);
+      }
+    }
+  }
+
+  .style2-links {
+    border-radius: 20px;
+    background: #fff;
+    font-family: PingFang SC Medium, Microsoft YaHei, SimHei;
+    .link {
+      position: relative;
+      display: block;
+      float: left;
+      width: 25%;
+      text-align: center;
+      padding: 30px 0;
+
+      .icon-links {
+        display: block;
+        margin: 0 auto 15px;
+        width: 50px;
+        height: 50px;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+      span {
+        display: block;
+      }
+      .num {
+        color: #f30c23;
+        font-size: 28px;
+        font-weight: 500;
+        margin-bottom: 20px;
+      }
+
+      .title {
+        font-size: 24px;
+        color: #666666;
+        display: inherit;
+        @include lineClamp(24px, 1, 1);
+      }
+    }
+  }
+}
+
+.mainmodule {
+  width: 100%;
+
+  .mianad {
+    // width: 100%;
+    height: auto;
+    margin: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    img {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+  }
+
+  .mianad2 {
+    overflow: hidden;
+    margin: 0 20px 20px;
+    border-radius: 20px;
+  }
+
+  .mainlist {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+    ul {
+      display: block;
+      height: auto;
+      background-color: #fff;
+      margin: 0 25px 20px;
+      border-radius: 20px;
+      li {
+        display: block;
+        height: 94px;
+        line-height: 94px;
+        border-bottom: 2px solid #f5f5f5;
+        box-sizing: border-box;
+        position: relative;
+        &::before {
+          content: '';
+          width: 100px;
+          height: 2px;
+          background: #fff;
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+        }
+        &:last-child {
+          border-bottom: 0;
+        }
+        a,
+        div {
+          position: relative;
+          display: block;
+          font-weight: 500;
+          font-size: 28px;
+          color: #333;
+          z-index: 9;
+          text-indent: 100px;
+          padding-right: 10%;
+          background-size: 42px auto;
+          background-position: 32px center;
+          background-repeat: no-repeat;
+          @include showEllipsis;
+
+          //会员中心
+          &.icon_jf {
+            background-image: url(src/assets/images/user/li_icon/myscore.png);
+          }
+
+          &.icon_xnb {
+            background-image: url(src/assets/images/user/li_icon/myxnb.png);
+          }
+
+          /* &.icon_yhq{background-image:url(src/assets/images/user/li_icon/mycoupon.png);} */
+          &.icon_zhcz {
+            background-image: url(src/assets/images/user/li_icon/count.png);
+          }
+
+          // &.icon_yetx{background-image:url(src/assets/images/user/li_icon/balance.png);}
+          &.icon_yfkdd {
+            background-image: url(src/assets/images/user/li_icon/orderend.png);
+          }
+
+          // &.icon_dpjsp{background-image:url(src/assets/images/user/li_icon/icon_comment.png);}
+          // &.icon_yscsp{background-image:url(src/assets/images/user/li_icon/icon_yscsp.png);}
+          &.icon_shop {
+            background-image: url(src/assets/images/user/li_icon/shop.png);
+          }
+
+          &.icon_vip {
+            background-image: url(src/assets/images/user/li_icon/vipCard.png);
+          }
+
+          &.icon_pm {
+            background-image: url(src/assets/images/user/li_icon/pm.png);
+          }
+
+          &.icon_trylists {
+            background-image: url(src/assets/images/user/li_icon/icon_try_lists.png);
+          }
+
+          &.icon_crowdlists {
+            background-image: url(src/assets/images/user/li_icon/icon_crowd_lists.png);
+          }
+
+          &.icon_xgzl {
+            background-image: url(src/assets/images/user/li_icon/editbtn.png);
+          }
+
+          &.icon_dzgl {
+            background-image: url(src/assets/images/user/li_icon/location.png);
+          }
+
+          &.icon_wdzc {
+            background-image: url(src/assets/images/user/li_icon/fxuser.png);
+          }
+
+          &.icon_hydj {
+            background-image: url(src/assets/images/user/li_icon/vip.png);
+          }
+
+          &.icon_hyhd {
+            background-image: url(src/assets/images/user/li_icon/user.png);
+          }
+
+          &.icon_wdhy {
+            background-image: url(src/assets/images/user/li_icon/userpro.png);
+          }
+
+          &.icon_wysj {
+            background-image: url(src/assets/images/user/li_icon/hysj.png);
+          }
+
+          &.icon_course {
+            background-image: url(src/assets/images/user/li_icon/mycourse.png);
+          }
+
+          &.icon_wdmember {
+            background-image: url(src/assets/images/user/li_icon/wdmember.png);
+          }
+
+          &.icon_cbb {
+            background-image: url(src/assets/images/user/li_icon/cbb.png);
+          }
+
+          &.icon_wdsjc {
+            background-image: url(src/assets/images/user/li_icon/wdsjc.png);
+          }
+          &.icon_hymyserve {
+            background-image: url(src/assets/images/user/li_icon/hymyserve.png);
+          }
+          &.icon_myserveorder {
+            background-image: url(src/assets/images/user/li_icon/myserveorder.png);
+          }
+
+          // 分销中心
+          &.icon_fxzt {
+            background-image: url(src/assets/images/user/li_icon/newspaper.png);
+          }
+
+          &.icon_wdyj {
+            background-image: url(src/assets/images/user/li_icon/mycash.png);
+          }
+
+          &.icon_syyjph {
+            background-image: url(src/assets/images/user/li_icon/rank.png);
+          }
+
+          &.icon_dzd {
+            background-image: url(src/assets/images/user/li_icon/shoin.png);
+          }
+          &.icon_mddd {
+            background-image: url(src/assets/images/user/li_icon/mddd.png);
+          }
+          &.icon_dcfk {
+            background-image: url(src/assets/images/user/li_icon/dcfk.png);
+          }
+
+          &.icon_ewm {
+            background-image: url(src/assets/images/user/li_icon/icon_code.png);
+          }
+          &.icon_invite {
+            background-image: url(src/assets/images/user/li_icon/invite.png);
+          }
+          &.icon_fxdd {
+            background-image: url(src/assets/images/user/li_icon/fxorder.png);
+          }
+
+          &.icon_upload {
+            background-image: url(src/assets/images/user/li_icon/upload.png);
+          }
+
+          &.icon_wdsj {
+            background-image: url(src/assets/images/user/li_icon/mysuperior.png);
+          }
+
+          &.icon_card {
+            background-image: url(src/assets/images/user/li_icon/icon_card.png);
+          }
+
+          &.icon_coupon {
+            background-image: url(src/assets/images/user/li_icon/icon_coupon.png);
+          }
+
+          // 代理中心
+          &.icon_cdlph {
+            background-image: url(src/assets/images/user/li_icon/cdlph.png);
+          }
+
+          &.icon_fxorder {
+            background-image: url(src/assets/images/user/li_icon/fxorder.png);
+          }
+
+          &.icon_supplier {
+            background-image: url(src/assets/images/user/li_icon/icon_supplierGoods.png);
+          }
+
+          &.icon_tdglj {
+            background-image: url(src/assets/images/user/li_icon/tdglj.png);
+          }
+
+          &.icon_tdyj {
+            background-image: url(src/assets/images/user/li_icon/tdyj.png);
+          }
+
+          &.icon_tjitem {
+            background-image: url(src/assets/images/user/li_icon/tjitem.png);
+          }
+
+          &.icon_xjuser {
+            background-image: url(src/assets/images/user/li_icon/xjuser.png);
+          }
+
+          &.icon_xjxndd {
+            background-image: url(src/assets/images/user/li_icon/xjxndd.png);
+          }
+
+          &.icon_mysuperiora {
+            background-image: url(src/assets/images/user/li_icon/mysuperiora.png);
+          }
+
+          &.icon_xnkc {
+            background-image: url(src/assets/images/user/li_icon/xnkc.png);
+          }
+
+          &.icon_wyjh {
+            background-image: url(src/assets/images/user/li_icon/wyjh.png);
+          }
+
+          &.icon_wojhd {
+            background-image: url(src/assets/images/user/li_icon/jhorder.png);
+          }
+
+          &.icon_tddd {
+            background-image: url(src/assets/images/user/li_icon/tddd.png);
+          }
+
+          &.icon_xjdd {
+            background-image: url(src/assets/images/user/li_icon/xjxndd.png);
+          }
+
+          &.icon_tjlb {
+            background-image: url(src/assets/images/user/li_icon/tjitem.png);
+          }
+
+          &.icon_tdyj {
+            background-image: url(src/assets/images/user/li_icon/tdyj.png);
+          }
+
+          &.icon_tdglj {
+            background-image: url(src/assets/images/user/li_icon/tdglj.png);
+          }
+
+          &.icon_wdhk {
+            background-image: url(src/assets/images/user/li_icon/wdhk.png);
+          }
+
+          &.icon_cdlph {
+            background-image: url(src/assets/images/user/li_icon/cdlph.png);
+          }
+
+          &.icon_wdsja {
+            background-image: url(src/assets/images/user/li_icon/mysuperiora.png);
+          }
+
+          &.icon_binding {
+            background-image: url(src/assets/images/user/li_icon/icon_binding.png);
+          }
+
+          &.icon_lower_reg {
+            background-image: url(src/assets/images/user/li_icon/lower_reg.png);
+          }
+
+          // 供货商中心
+          &.icon_gysdd {
+            background-image: url(src/assets/images/user/li_icon/fxorder.png);
+          }
+
+          &.icon_gyssp {
+            background-image: url(src/assets/images/user/li_icon/icon_supplierGoods.png);
+          }
+
+          &.icon_gystx {
+            background-image: url(src/assets/images/user/li_icon/icon_gystx.png);
+          }
+
+          &.icon_yscsp {
+            background-image: url(src/assets/images/user/li_icon/icon_yscsp.png);
+          }
+
+          &.icon_tjgys {
+            background-image: url(src/assets/images/user/li_icon/icon_tjgys.png);
+          }
+          &.icon_xsj {
+            background-image: url(src/assets/images/user/li_icon/icon_xsj.png);
+          }
+          &.icon_kefu {
+            background-image: url(src/assets/images/user/li_icon/icon_kefu.png);
+          }
+          span {
+            position: absolute;
+            font-size: 20px;
+            top: 50%;
+            right: 65px;
+            transform: translateY(-50%);
+            border-radius: 40px;
+            color: $default;
+            background-color: $warning;
+            min-width: 80px;
+            line-height: 44px;
+            text-align: center;
+            text-indent: 0;
+            font-family: Gilroy-Regular;
+          }
+
+          .icon_right {
+            // font-size: 20px;
+            color: #666;
+            width: 24px;
+            height: 100%;
+            position: absolute;
+            right: 20px;
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.style2-actions {
+  background: $default;
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% - 40px);
+  margin: 20px;
+  border-radius: 16px;
+
+  &-title {
+    font-weight: bold;
+    font-size: 32px;
+    color: #333;
+    width: 100%;
+    line-height: 80px;
+    padding: 0 25px;
+    border-bottom: 1px solid #ededed;
+    box-sizing: border-box;
+  }
+
+  .action {
+    width: 25%;
+    text-align: center;
+    padding: 33px 0 !important;
+    // border: 2px solid #f5f5f5;
+    // border-width: 0 2px 2px 0;
+    // overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+
+    .icon-action {
+      display: block;
+      margin: 0 auto 25px;
+      width: 50px;
+      height: 50px;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+
+      //会员中心
+      &.icon1_1 {
+        background-image: url(src/assets/images/user/li_icon/myscore.png);
+      }
+
+      &.icon1_14 {
+        background-image: url(src/assets/images/user/li_icon/myxnb.png);
+      }
+
+      /* &.icon_yhq{background-image:url(src/assets/images/user/li_icon/mycoupon.png);} */
+      &.icon1_3 {
+        background-image: url(src/assets/images/user/li_icon/count.png);
+      }
+
+      // &.icon_yetx{background-image:url(src/assets/images/user/li_icon/balance.png);}
+      &.icon1_5 {
+        background-image: url(src/assets/images/user/li_icon/orderend.png);
+      }
+
+      // &.icon_dpjsp{background-image:url(src/assets/images/user/li_icon/icon_comment.png);}
+      // &.icon_yscsp{background-image:url(src/assets/images/user/li_icon/icon_yscsp.png);}
+      &.icon1_16 {
+        background-image: url(src/assets/images/user/li_icon/shop.png);
+      }
+
+      &.icon7_1 {
+        background-image: url(src/assets/images/user/li_icon/vipCard.png);
+      }
+
+      &.icon1_15 {
+        background-image: url(src/assets/images/user/li_icon/pm.png);
+      }
+      &.icon1_30 {
+        background-image: url(src/assets/images/user/li_icon/hymyserve.png);
+      }
+
+      &.icon1_7 {
+        background-image: url(src/assets/images/user/li_icon/icon_tjgys.png);
+      }
+
+      &.icon1_8 {
+        background-image: url(src/assets/images/user/li_icon/icon_try_lists.png);
+      }
+
+      &.icon1_9 {
+        background-image: url(src/assets/images/user/li_icon/icon_crowd_lists.png);
+      }
+
+      &.icon1_10 {
+        background-image: url(src/assets/images/user/li_icon/editbtn.png);
+      }
+
+      &.icon1_11 {
+        background-image: url(src/assets/images/user/li_icon/location.png);
+      }
+
+      &.icon3_1 {
+        background-image: url(src/assets/images/user/li_icon/fxuser.png);
+      }
+
+      &.icon1_12 {
+        background-image: url(src/assets/images/user/li_icon/vip.png);
+      }
+
+      &.icon1_13 {
+        background-image: url(src/assets/images/user/li_icon/user.png);
+      }
+
+      &.icon2_7 {
+        background-image: url(src/assets/images/user/li_icon/userpro.png);
+      }
+
+      /* &.icon_wdmember{
+        background-image:url(src/assets/images/user/li_icon/wdmember.png);
+      } */
+      &.icon1_17 {
+        background-image: url(src/assets/images/user/li_icon/cbb.png);
+      }
+      &.icon1_18 {
+        background-image: url(src/assets/images/user/li_icon/hysj.png);
+      }
+
+      &.icon1_19 {
+        background-image: url(src/assets/images/user/li_icon/mycourse.png);
+      }
+
+      &.icon_upload {
+        background-image: url(src/assets/images/user/li_icon/upload.png);
+      }
+
+      &.icon2_26 {
+        background-image: url(src/assets/images/user/li_icon/wdsjc.png);
+      }
+      &.icon2_27 {
+        background-image: url(src/assets/images/user/li_icon/invite.png);
+      }
+
+      &.icon2_28 {
+        background-image: url(src/assets/images/user/li_icon/icon_binding.png);
+      }
+      &.icon2_29 {
+        background-image: url(src/assets/images/user/li_icon/mddd.png);
+      }
+      &.icon2_30 {
+        background-image: url(src/assets/images/user/li_icon/myserveorder.png);
+      }
+      &.icon2_31 {
+        background-image: url(src/assets/images/user/li_icon/dcfk.png);
+      }
+
+      //分销中心
+      &.icon2_1 {
+        background-image: url(src/assets/images/user/li_icon/newspaper.png);
+      }
+
+      &.icon2_9 {
+        background-image: url(src/assets/images/user/li_icon/mycash.png);
+      }
+
+      &.icon2_10 {
+        background-image: url(src/assets/images/user/li_icon/rank.png);
+      }
+
+      &.icon2_11 {
+        background-image: url(src/assets/images/user/li_icon/shoin.png);
+      }
+
+      &.icon2_12 {
+        background-image: url(src/assets/images/user/li_icon/icon_code.png);
+      }
+
+      &.icon2_13 {
+        background-image: url(src/assets/images/user/li_icon/mysuperior.png);
+      }
+
+      &.icon2_14 {
+        background-image: url(src/assets/images/user/li_icon/icon_gystx.png);
+      }
+
+      &.icon2_15 {
+        background-image: url(src/assets/images/user/li_icon/icon_code.png);
+      }
+
+      &.icon2_16 {
+        background-image: url(src/assets/images/user/li_icon/icon_card.png);
+      }
+
+      &.icon2_21 {
+        background-image: url(src/assets/images/user/li_icon/icon_yscsp.png);
+      }
+
+      &.icon2_30 {
+        background-image: url(src/assets/images/user/li_icon/icon_coupon.png);
+      }
+
+      //代理中心
+      &.icon2_25 {
+        background-image: url(src/assets/images/user/li_icon/cdlph.png);
+      }
+
+      &.icon3_2 {
+        background-image: url(src/assets/images/user/li_icon/wdmember.png);
+      }
+
+      &.icon2_4 {
+        background-image: url(src/assets/images/user/li_icon/fxorder.png);
+      }
+
+      &.icon2_2 {
+        background-image: url(src/assets/images/user/li_icon/icon_supplierGoods.png);
+      }
+
+      &.icon2_23 {
+        background-image: url(src/assets/images/user/li_icon/tdglj.png);
+      }
+
+      &.icon2_22 {
+        background-image: url(src/assets/images/user/li_icon/tdyj.png);
+      }
+
+      &.icon2_17 {
+        background-image: url(src/assets/images/user/li_icon/tjitem.png);
+      }
+
+      &.icon3_8 {
+        background-image: url(src/assets/images/user/li_icon/xjuser.png);
+      }
+
+      &.icon3_9 {
+        background-image: url(src/assets/images/user/li_icon/xjxndd.png);
+      }
+
+      &.icon2_24 {
+        background-image: url(src/assets/images/user/li_icon/mysuperiora.png);
+      }
+
+      // 订货商中心
+      &.icon3_6 {
+        background-image: url(src/assets/images/user/li_icon/xnkc.png);
+      }
+
+      &.icon3_5 {
+        background-image: url(src/assets/images/user/li_icon/wyjh.png);
+      }
+
+      &.icon3_7 {
+        background-image: url(src/assets/images/user/li_icon/jhorder.png);
+      }
+
+      &.icon3_10 {
+        background-image: url(src/assets/images/user/li_icon/wdhk.png);
+      }
+      &.icon3_11 {
+        background-image: url(src/assets/images/user/li_icon/icon_xsj.png);
+      }
+
+      &.icon3_12 {
+        background-image: url(src/assets/images/user/li_icon/icon_kefu.png);
+      }
+
+      &.icon3_13 {
+        background-image: url(src/assets/images/user/li_icon/lower_reg.png);
+      }
+    }
+
+    .title {
+      display: block;
+      width: 99%;
+      margin: 0 auto;
+      font-size: 24px;
+      color: #333;
+      line-height: 40px;
+      @include showEllipsis;
+    }
+
+    .subtitle {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: #9c9c9c;
+      font-size: 22px;
+      margin-top: 2px;
+      display: none;
+    }
+  }
+}
+.query-box {
+  background: #fff;
+  border-radius: 20px;
+  margin: 0 30px;
+  .top-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title {
+      margin-left: 20px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #333333;
+    }
+  }
+  .header-box {
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    span {
+      display: block;
+      margin-left: 10px;
+      border-radius: 20px;
+      width: 70px;
+      line-height: 30px;
+      font-size: 20px;
+      border: thin solid #ccc;
+      text-align: center;
+    }
+    .select {
+      color: #fff;
+      border-color: red;
+      background: red;
+    }
+  }
+  .get-box {
+    width: 660px;
+    height: 180px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    margin: 0 30px 30px 0;
+    .getMoney {
+      width: 50%;
+      text-align: center;
+      .title {
+        font-size: 30px;
+        font-weight: 700;
+        padding: 30px;
+      }
+      .money {
+        color: red;
+        font-size: 30px;
+      }
+    }
+  }
+}
+
+.code-pop {
+  width: 600px;
+  height: 600px;
+  padding: 60px;
+  border-radius: 20px;
+  background: #fff;
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
