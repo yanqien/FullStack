@@ -40,16 +40,11 @@
   </div>
 </template>
 <script lang="ts">
-import { ref, reactive, toRefs, getCurrentInstance, onMounted } from 'vue'
+import { ref, reactive, toRefs, getCurrentInstance, onMounted, defineComponent } from 'vue'
 import LoginForm from './components/LoginForm.vue'
 import RegisterForm from './components/RegisterForm.vue'
 
-export interface DataProps {
-  state: boolean
-  time: number
-}
-
-export default {
+export default defineComponent({
   name: 'LoginRegister',
   components: { LoginForm, RegisterForm },
   setup() {
@@ -57,7 +52,7 @@ export default {
     const { ctx } = getCurrentInstance()
     const signUpMode = ref<boolean>(false)
 
-    const videoFormat: DataProps = reactive({
+    const videoFormat: any = reactive({
       state: false,
       time: 0,
     })
@@ -70,7 +65,7 @@ export default {
       signUpMode,
     }
   },
-}
+})
 </script>
 <style lang="scss" scoped>
 .login-bg {

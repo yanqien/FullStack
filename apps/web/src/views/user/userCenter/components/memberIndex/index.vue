@@ -42,12 +42,7 @@
       <!-- 图片广告 -->
       <div class="mianad" v-if="false">
         <a :href="memberInfo.user_img_link">
-          <img
-            v-lazy="memberInfo.user_img_ggt"
-            width="100%"
-            alt
-            v-if="memberInfo.user_img_ggt"
-          />
+          <img :src="memberInfo.user_img_ggt" width="100%" />
         </a>
       </div>
       <div class="lunbo">

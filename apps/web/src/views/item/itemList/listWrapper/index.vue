@@ -23,36 +23,6 @@
               :key="index"
             ></van-tab>
           </van-tabs>
-          <van-tabs
-            :ellipsis="false"
-            line-width="27px"
-            line-height="2px"
-            sticky
-            v-model="activeTwo"
-            v-if="cateListTwo && cateListTwo.length > 0"
-            @click="handleClickCateTwo"
-          >
-            <van-tab
-              v-for="(item, index) in cateListTwo"
-              :title="item.class_name"
-              :key="index"
-            ></van-tab>
-          </van-tabs>
-          <van-tabs
-            :ellipsis="false"
-            line-width="27px"
-            line-height="2px"
-            sticky
-            v-model="activeThree"
-            v-if="cateListThree && cateListThree.length > 0"
-            @click="handleClickCateThree"
-          >
-            <van-tab
-              v-for="(item, index) in cateListThree"
-              :title="item.class_name"
-              :key="index"
-            ></van-tab>
-          </van-tabs>
         </div>
 
         <div class="sort itemList-sort">
@@ -97,6 +67,7 @@ export default defineComponent({
   name: 'list-wrapper',
   setup() {
     const state: any = reactive({
+      cateListOne: [], // 分类
       postData: {
         title: '',
         p: 1,
@@ -1338,16 +1309,6 @@ export default defineComponent({
 //       window.addEventListener('scroll', this.scrollFn)
 //     })
 //   },
-//   watch: {
-//     itemList(val) {
-//       // console.log(val)
-//       if (val.length <= 0) {
-//         $('body').addClass('bg_white')
-//       } else {
-//         $('body').removeClass('bg_white')
-//       }
-//     },
-//   },
 //   /* watch: {
 //       cateListOne(val) {
 //         if (val.length > 0) {
@@ -1364,31 +1325,6 @@ export default defineComponent({
 //         console.log(val)
 //       }
 //     }, */
-//   updated() {
-//     // 分开计算 避免切换类型时高度计算错误
-//     const searchHeight = document.querySelector('.itemList-search')
-//       ? document.querySelector('.itemList-search').offsetHeight
-//       : 0
-//     const shopHeight = document.querySelector('.searchShop')
-//       ? document.querySelector('.searchShop').offsetHeight
-//       : 0
-//     const cateHeight = document.querySelector('.cate')
-//       ? document.querySelector('.cate').offsetHeight
-//       : 0
-//     const sortHeight = document.querySelector('.itemList-sort')
-//       ? document.querySelector('.itemList-sort').offsetHeight
-//       : 0
-//     this.listHeaderH = searchHeight + shopHeight + cateHeight + sortHeight
-//   },
-//   activated() {
-//     window.addEventListener('scroll', this.scrollFn)
-//   },
-//   deactivated() {
-//     window.removeEventListener('scroll', this.scrollFn) // 移除监听
-//   },
-//   beforeDestroy() {
-//     window.removeEventListener('scroll', this.scrollFn) // 移除监听
-//   },
 // }
 </script>
 

@@ -96,128 +96,6 @@ import bg_img from '@img/user/member/user_style3_bg_black.png'
 import avatar from '@img/user/member/default_avatar.jpg'
 import memberIndex from './components/memberIndex/index.vue'
 // import memberIndex2 from './components/memberIndex2/index'
-// export default {
-//   computed: {
-//     ...mapGetters(['wxConfig']),
-//   },
-//   components: {
-//     userNav,
-//     memberIndex,
-//     memberIndex2,
-//     editUser,
-//   },
-//   data() {
-//     return {
-//       outerShow: false,
-//       showMyTeacher: false,
-//       letterCount: 0, // 站内信单独接口获取
-//       memberData: {},
-//       memberInfo: {
-//         is_wx: 1,
-//       },
-//       bgImg: bg_img,
-//       editInfo: {
-//         show: false,
-//         radio: 1,
-//         editInfoData: [],
-//       },
-//       // 是否显示切换按钮
-//       userStatus: 0,
-//       dxy_dz: false,
-//       aft_dz: false,
-//       ysmy_dz: false, // 浙江熠诗贸易有限公司
-//     }
-//   },
-//   created() {
-//     const shop = this.$route.query.sid
-//     const dxy_dz = this.$_shop('$_dxy_dz', shop)
-//     this.dxy_dz = dxy_dz // 邓小英定制
-//     const aft_dz = this.$_shop('$_aft_dz', shop)
-//     this.aft_dz = aft_dz // 南昌阿凡提
-//     // 浙江熠诗贸易有限公司 店铺
-//     const ysmy_dz = this.$_shop('$_ysmy_dz', shop)
-//     this.ysmy_dz = ysmy_dz
-//     this.init()
-//     // 定制 东阿阿胶股 账号切换功能
-//     if (this.$route.query.sid === '4032023') {
-//       this.getUserData()
-//     }
-//   },
-//   methods: {
-//     Jump(url, data) {
-//       this.$JumpPath(this, url, data)
-//     },
-//     init() {},
-//     // 更新昵称和会员头像
-//     renderAvatar() {
-//       this.outerShow = true
-//       setTimeout(() => {
-//         this.outerShow = false
-//       }, 10000)
-//       sync().then((res) => {
-//         this.outerShow = false
-//         if (res.status == 1) {
-//           if (res.data) {
-//             this.memberInfo.avatar = res.data.headimgurl
-//             this.memberInfo.nickname = res.data.nickname
-//           }
-//         } else {
-//           // this.$Error(res.msg)
-//         }
-//       })
-//     },
-//     // 更新站内信
-//     uptMsgInfoFn() {
-//       uptMsgInfo().then((res) => {
-//         if (res.status == 1) {
-//           this.letterCount = res.data.num
-//         }
-//       })
-//     },
-//     // 退出登录
-//     loginOut() {
-//       quit().then((res) => {
-//         if (res.status == 1) {
-//           window.location.href = res.data
-//         } else {
-//           this.$Error(res.msg)
-//         }
-//       })
-//     },
-//     // 切换签到和会员权益
-//     // toggleLevelQd() {
-//     //   this.memberInfo.showToggle = !this.memberInfo.showToggle
-//     // },
-//     // 定制：显示我的导师
-//     showMyTeacherPop() {
-//       this.showMyTeacher = true
-//     },
-//     // 复制
-//     copyMentorWx(text, e) {
-//       this.$Copy(this, text, e, '复制成功', '复制失败,请通过扫码方式添加好友')
-//       this.showMyTeacher = false
-//     },
-//     // 定制：隐藏我的导师
-//     hideMyTeacherPop() {
-//       this.showMyTeacher = false
-//     },
-//     // 切换user-id
-//     editUserId() {
-//       this.editInfo.show = true
-//     },
-//     // 获取当前的userid数据
-//     getUserData() {
-//       getUsers().then((res) => {
-//         this.userStatus = res.status
-//         this.editInfo.editInfoData = res.data
-//       })
-//     },
-//     // 刷新页面
-//     RefreshPage(url) {
-//       window.location.href = url
-//     },
-//   },
-// }
 import { ref, reactive, toRefs, getCurrentInstance, onMounted } from 'vue'
 export default {
   name: 'usercenter',
@@ -235,8 +113,12 @@ export default {
     })
 
     const refData: any = toRefs(state)
+
+    // 退出登录
+    const loginOut = () => {}
     return {
       ...refData,
+      loginOut,
     }
   },
 }

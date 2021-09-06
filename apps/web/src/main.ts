@@ -6,5 +6,6 @@ import store from './store'
 import 'vant/lib/index.css'
 import '@/assets/styles/index.scss' // global css
 import 'amfe-flexible/index' // 适配手机端
+import './permission'
 
 createApp(App).use(router).use(store).mount('#app')

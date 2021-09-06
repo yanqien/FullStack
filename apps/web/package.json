@@ -10,6 +10,7 @@
   "dependencies": {
     "amfe-flexible": "^2.2.1",
     "axios": "^0.21.1",
+    "js-cookie": "^2.2.1",
     "lodash-es": "^4.17.20",
     "vant": "^3.0.11",
     "vue": "^3.0.5",

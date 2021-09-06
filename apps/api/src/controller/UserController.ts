@@ -82,7 +82,12 @@ export class UserController {
         users[0].userName == dto.userName &&
         users[0].password == dto.password
       ) {
-        return { status: 'success', code: 200, message: '登录成功' };
+        return {
+          status: 'success',
+          code: 200,
+          message: '登录成功',
+          token: 'ouasd-12xasdasdd-weasdqwe',
+        };
       } else {
         return { status: 'fail', code: 0, message: '用户名或密码错误' };
       }
